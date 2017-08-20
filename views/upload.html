@@ -13,7 +13,7 @@
 <div class="mobile-only warning"><span>Mobile version does not full support uploading</span></div>
 <div class="form upload-form">
 	<div class="preview">
-		<div class="post" id="Discover" data-id="{{ post._id }}"> <!-- START OF POST -->
+		<div class="post" id="discover" data-id="{{ post._id }}"> <!-- START OF POST -->
 			<div class="postHeader">
 				<div class="postArtist" id="postArtist"></div>
 				<div class="postTitle" id="postSong"></div>
@@ -184,7 +184,7 @@ select.addEventListener("change", function(event){
 	var categoryPreview = document.querySelector('.categoryPreview');
 	categoryPreview.innerText = "Category: " + value;
 	categoryPreview.setAttribute('id', value);
-	post.setAttribute('id', value);
+	post.setAttribute('id', value.replace(/\s/g, '').toLowerCase());
 });
 	var isIE = /*@cc_on!@*/false || !!document.documentMode;
 	// Edge 20+

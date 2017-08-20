@@ -53,6 +53,7 @@ module.exports = function(app, db, upload){
 						'posts.created_at',
 						'genre.genreShowName',
 						'category.categoryShowName',
+						'category.name',
 						'users.profileImage',
 						'users.username')
 		.orderBy('created_at', 'desc')
@@ -112,6 +113,7 @@ module.exports = function(app, db, upload){
 						'posts.created_at',
 						'genre.genreShowName',
 						'category.categoryShowName',
+						'category.name',
 						'users.profileImage',
 						'users.username')
 		.orderBy('created_at', 'desc')
@@ -275,7 +277,7 @@ module.exports = function(app, db, upload){
 
 	app.get('/c/:category', function(req, res, next){
 		var user = req.session.user;
-		var category = req.params.category.toLowerCase();
+		var category = req.params.category.replace(/\s/g, '').toLowerCase();
 		var genreList;
 		var genreShowName;
 		var categoryId;
@@ -325,6 +327,7 @@ module.exports = function(app, db, upload){
 								'posts.created_at',
 								'genre.genreShowName',
 								'category.categoryShowName',
+								'category.name',
 								'users.profileImage',
 								'users.username')
 				.orderBy('created_at', 'desc')
@@ -352,7 +355,7 @@ module.exports = function(app, db, upload){
 
 	app.get('/c/:category/:genre', function(req, res,next){
 		var user = req.session.user;
-		var category = req.params.category.toLowerCase();
+		var category = req.params.category.replace(/\s/g, '').toLowerCase();
 		var genre = req.params.genre.toLowerCase();
 		var genreShowName = req.params.genre;
 		var genreList;
@@ -422,6 +425,7 @@ module.exports = function(app, db, upload){
 								'posts.created_at',
 								'genre.genreShowName',
 								'category.categoryShowName',
+								'category.name',
 								'users.profileImage',
 								'users.username')
 				.orderBy('created_at', 'desc')
@@ -551,6 +555,7 @@ module.exports = function(app, db, upload){
 								'posts.tags',
 								'posts.created_at',
 								'category.categoryShowName',
+								'category.name',
 								'posts.audioFile',
 								'posts.imageFile',
 								'users.profileImage',
@@ -870,7 +875,7 @@ module.exports = function(app, db, upload){
 		var created_at = new Date();
 		var genreDisplayName = req.body.genre;
 		var categoryDisplayName = req.body.category;
-		var categoryName = categoryDisplayName.toLowerCase();
+		var categoryName = categoryDisplayName.replace(/\s/g, '').toLowerCase();
 		var categoryId;
 		var genreName = genreDisplayName.toLowerCase();
 		var genreId;
@@ -1165,6 +1170,7 @@ module.exports = function(app, db, upload){
 								'posts.tags',
 								'posts.created_at',
 								'category.categoryShowName',
+								'category.name',
 								'posts.audioFile',
 								'posts.imageFile',
 								'users.profileImage',
@@ -1371,6 +1377,7 @@ module.exports = function(app, db, upload){
 								'genre.genreShowName',
 								'posts.tags',
 								'category.categoryShowName',
+								'category.name',
 								'posts.audioFile',
 								'posts.imageFile',
 								'posts.created_at',
